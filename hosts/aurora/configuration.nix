@@ -4,10 +4,10 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../system/default.nix
-      ../system/avahi-daemon.nix
-      ../system/cupsd.nix
-      ../system/sshd.nix
+      ../../modules/default.nix
+      ../../modules/avahi-daemon.nix
+      ../../modules/cupsd.nix
+      ../../modules/sshd.nix
     ];
 
   networking.hostName = "aurora";
