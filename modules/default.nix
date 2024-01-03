@@ -32,7 +32,12 @@
     ];
   };
 
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+  services.openssh = {
+    enable = true;
+    settings.PermitRootLogin = "no";
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
+  };
+
+  nix.extraOptions = "experimental-features = nix-command flakes";
 }

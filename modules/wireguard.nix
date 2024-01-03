@@ -10,6 +10,7 @@
       { publicKey = "4kdEOOMekK/pE8kioO+A8rH9LJMUh/yBzTOak9TCpH8="; allowedIPs = [ "192.168.200.3/32" ]; }
     ];
   };
+
   networking.nat = {
     enable = true;
     internalIPs = [ "192.168.200.0/24" ];
