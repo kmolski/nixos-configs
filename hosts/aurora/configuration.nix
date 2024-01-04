@@ -6,7 +6,7 @@
       ./hardware-configuration.nix
       ../../modules/default.nix
       ../../modules/avahi-daemon.nix
-      ../../modules/cupsd.nix
+      ../../modules/cups-server.nix
     ];
 
   networking.hostName = "aurora";
