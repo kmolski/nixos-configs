@@ -27,7 +27,7 @@
     isNormalUser = true;
     initialPassword = "";
     extraGroups = [ "wheel" ];
-    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFYr/eIDHgmRU3FA+Dj6WySYhk5a3upNJHD8nUi5jk91 krzysztof@aurora"];
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFYr/eIDHgmRU3FA+Dj6WySYhk5a3upNJHD8nUi5jk91 krzysztof@aurora" ];
     packages = with pkgs; [
     ];
   };
