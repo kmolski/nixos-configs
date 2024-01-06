@@ -6,37 +6,13 @@
       ./hardware-configuration.nix
       ../../modules/default.nix
       ../../modules/avahi-daemon.nix
-      ../../modules/wireguard.nix
+      ../../modules/wg-server.nix
     ];
 
   networking.hostName = "firestorm";
 
-  boot.loader.grub.enable = false; # Use the extlinux boot loader.
-  boot.loader.generic-extlinux-compatible.enable = true;
-  boot.initrd.availableKernelModules = [ "reset-raspberrypi" "pcie-brcmstb" "usbhid" "uas" ];
-  hardware.enableRedistributableFirmware = true;
+  modules.wg-server.lanInterface = "end0";
 
-  services.fstrim.enable = true; # Enable SCSI unmap for external SSD
-  services.udev.extraRules = ''
-    ACTION=="add|change", ATTRS{idVendor}=="174c", ATTRS{idProduct}=="55aa", SUBSYSTEM=="scsi_disk", ATTR{provisioning_mode}="unmap"
-  '';
-
-  age.secrets.duckdns-token.file = ../secrets/duckdns-token.age;
-  age.secrets.duckdns-token.owner = "duckdns";
-  age.secrets.wg-privatekey.file = ../secrets/wg-privatekey.age;
-
-  networking.interfaces.end0.ipv4.addresses = [{
-    address = "192.168.100.200";
-    prefixLength = 24;
-  }];
-  networking.defaultGateway = "192.168.100.1";
-  networking.nameservers = [ "192.168.100.1" "1.1.1.1" ];
-
-  users.users.duckdns = {
-    isSystemUser = true;
-    group = "duckdns";
-  };
-  users.groups.duckdns = {};
   systemd.services.duckdns-update = {
     description = "DuckDNS IP update";
 
@@ -59,6 +35,11 @@
       fi
     '';
   };
+  users.users.duckdns = {
+    isSystemUser = true;
+    group = "duckdns";
+  };
+  users.groups.duckdns = { };
 
   services.postgresql.enable = true;
   services.miniflux = {
@@ -71,7 +52,27 @@
   };
 
   networking.firewall.allowedTCPPorts = [ 8080 ];
-  networking.firewall.allowedUDPPorts = [ 51820 ];
+
+  age.secrets.duckdns-token.file = ../secrets/duckdns-token.age;
+  age.secrets.duckdns-token.owner = "duckdns";
+  age.secrets.wg-privatekey.file = ../secrets/wg-privatekey.age;
+
+  networking.interfaces.end0.ipv4.addresses = [{
+    address = "192.168.100.200";
+    prefixLength = 24;
+  }];
+  networking.defaultGateway = "192.168.100.1";
+  networking.nameservers = [ "192.168.100.1" "1.1.1.1" ];
+
+  boot.loader.grub.enable = false; # Use the extlinux boot loader.
+  boot.loader.generic-extlinux-compatible.enable = true;
+  boot.initrd.availableKernelModules = [ "reset-raspberrypi" "pcie-brcmstb" "usbhid" "uas" ];
+  hardware.enableRedistributableFirmware = true;
+
+  services.fstrim.enable = true; # Enable SCSI unmap for the external SSD.
+  services.udev.extraRules = ''
+    ACTION=="add|change", ATTRS{idVendor}=="174c", ATTRS{idProduct}=="55aa", SUBSYSTEM=="scsi_disk", ATTR{provisioning_mode}="unmap"
+  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
