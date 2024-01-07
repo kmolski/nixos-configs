@@ -26,7 +26,6 @@ in {
   options.modules.wg-server = {
     lanInterface = lib.mkOption {
       type = lib.types.str;
-      default = null;
       example = "end0";
       description = lib.mkDoc ''
         The name of the local-area network interface.
