@@ -6,40 +6,14 @@
       ./hardware-configuration.nix
       ../../modules/default.nix
       ../../modules/avahi-daemon.nix
+      ../../modules/duckdns-update.nix
       ../../modules/wg-server.nix
     ];
 
   networking.hostName = "firestorm";
 
+  modules.duckdns-update.domain = "kmolski";
   modules.wg-server.lanInterface = "end0";
-
-  systemd.services.duckdns-update = {
-    description = "DuckDNS IP update";
-
-    requires = [ "network.target" ];
-    startAt = "*:0/5";
-
-    path = [ pkgs.curl ];
-    serviceConfig = {
-      Type = "simple";
-      User = "duckdns";
-      Environment = [ "TOKEN_FILE=%d/duckdns-token" ];
-      LoadCredential = "duckdns-token:${config.age.secrets.duckdns-token.path}";
-    };
-    script = ''
-      URL="https://www.duckdns.org/update?domains=kmolski&token=$(cat $TOKEN_FILE)"
-      CURL_OUT=$(echo url="$URL" | curl --silent --config -)
-
-      if [ $CURL_OUT != "OK" ]; then
-        logger -p daemon.err "duckdns update failed"
-      fi
-    '';
-  };
-  users.users.duckdns = {
-    isSystemUser = true;
-    group = "duckdns";
-  };
-  users.groups.duckdns = { };
 
   services.postgresql.enable = true;
   services.miniflux = {
@@ -51,11 +25,11 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 8080 ];
-
   age.secrets.duckdns-token.file = ../secrets/duckdns-token.age;
   age.secrets.duckdns-token.owner = "duckdns";
   age.secrets.wg-privatekey.file = ../secrets/wg-privatekey.age;
+
+  networking.firewall.allowedTCPPorts = [ 8080 ];
 
   networking.interfaces.end0.ipv4.addresses = [{
     address = "192.168.100.200";
