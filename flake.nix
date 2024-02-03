@@ -25,6 +25,10 @@
         system = "aarch64-linux";
         modules = [ ./hosts/firestorm/configuration.nix agenix.nixosModules.default ];
       };
+      cloudburst = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ ./hosts/cloudburst/configuration.nix agenix.nixosModules.default ];
+      };
     };
 
     homeConfigurations = {
@@ -48,6 +52,10 @@
         firestorm = {
           hostname = "firestorm.local";
           profiles.system.path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.firestorm;
+        };
+        cloudburst = {
+          hostname = "cloudburst.local";
+          profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cloudburst;
         };
       };
     };
