@@ -15,7 +15,7 @@
     deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, agenix, deploy-rs, home-manager, ... }: {
+  outputs = { self, nixpkgs, home-manager, agenix, deploy-rs, ... }: {
     nixosConfigurations = {
       aurora = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
@@ -54,8 +54,10 @@
           profiles.system.path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.firestorm;
         };
         cloudburst = {
-          hostname = "cloudburst.local";
+          hostname = "localhost";
           profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cloudburst;
+          profiles.home.path = deploy-rs.lib.x86_64-linux.activate.home-manager self.homeConfigurations.desktop;
+          profiles.home.user = "kmolski";
         };
       };
     };
