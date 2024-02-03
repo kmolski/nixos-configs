@@ -23,9 +23,10 @@
 
   boot.loader.systemd-boot.enable = true; # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = [ "zfs" ];
   boot.kernelParams = [ "elevator=none" ];
+  boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.forceImportRoot = false;
+  hardware.enableRedistributableFirmware = true;
   networking.hostId = "b682e84e";
 
   # This value determines the NixOS release from which the default
