@@ -25,6 +25,7 @@
     jq
     lsof
     neovim
+    python3
     ripgrep
     rlwrap
     rsync
