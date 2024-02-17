@@ -41,9 +41,8 @@
     deploy = {
       user = "root";
       sshUser = "kmolski";
-      sshOpts = [ "-t" ];
       remoteBuild = true;
-      magicRollback = false;
+      interactiveSudo = true;
       nodes = {
         aurora = {
           hostname = "aurora.local";
@@ -58,6 +57,7 @@
           profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cloudburst;
           profiles.home.path = deploy-rs.lib.x86_64-linux.activate.home-manager self.homeConfigurations.desktop;
           profiles.home.user = "kmolski";
+          profiles.home.interactiveSudo = false;
         };
       };
     };
