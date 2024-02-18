@@ -9,6 +9,7 @@
     enable = true;
     userName = "kmolski";
     userEmail = "krzysztof.molski29@gmail.com";
+    ignores = [ ".direnv" ".envrc" ];
   };
 
   programs.htop = {
@@ -44,6 +45,11 @@
   };
 
   programs.fish.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   programs.home-manager.enable = true;
 
   home.username = "kmolski";
