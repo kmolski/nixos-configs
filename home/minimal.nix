@@ -5,6 +5,13 @@
     neofetch
   ];
 
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
+
+  programs.fish.enable = true;
+
   programs.git = {
     enable = true;
     userName = "kmolski";
@@ -44,7 +51,6 @@
     ]);
   };
 
-  programs.fish.enable = true;
   programs.home-manager.enable = true;
 
   home.username = "kmolski";
