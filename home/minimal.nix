@@ -36,6 +36,7 @@
         STATE
         COMM
       ];
+      sort_key = config.lib.htop.fields.PERCENT_MEM;
       hide_userland_threads = true;
       detailed_cpu_time = true;
     } // (with config.lib.htop; leftMeters [
