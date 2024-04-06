@@ -21,6 +21,7 @@
     fish
     fzf
     git
+    gnupg
     htop
     jq
     lsof
