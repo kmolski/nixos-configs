@@ -17,6 +17,7 @@
     desktopManager.plasma5.enable = true;
   };
   services.printing.enable = true;
+  services.pcscd.enable = true;
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
