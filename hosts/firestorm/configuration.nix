@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ../../modules/default.nix
       ../../modules/avahi-daemon.nix
+      ../../modules/cups-server.nix
       ../../modules/duckdns-update.nix
       ../../modules/wg-server.nix
     ];

@@ -17,10 +17,6 @@
 
   outputs = { self, nixpkgs, home-manager, agenix, deploy-rs, ... }: {
     nixosConfigurations = {
-      aurora = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        modules = [ ./hosts/aurora/configuration.nix ];
-      };
       firestorm = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [ ./hosts/firestorm/configuration.nix agenix.nixosModules.default ];
@@ -44,16 +40,12 @@
       remoteBuild = true;
       interactiveSudo = true;
       nodes = {
-        aurora = {
-          hostname = "aurora.local";
-          profiles.system.path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.aurora;
-        };
         firestorm = {
           hostname = "firestorm.local";
           profiles.system.path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.firestorm;
         };
         cloudburst = {
-          hostname = "localhost";
+          hostname = "cloudburst.local";
           profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.cloudburst;
           profiles.home.path = deploy-rs.lib.x86_64-linux.activate.home-manager self.homeConfigurations.desktop;
           profiles.home.user = "kmolski";
