@@ -25,7 +25,7 @@
   programs.gpg = {
     enable = true;
     settings = {
-      keyid-format = "0xlong";
+      keyid-format = "long";
       with-fingerprint = true;
       s2k-cipher-algo = "AES256";
       s2k-digest-algo = "SHA512";
