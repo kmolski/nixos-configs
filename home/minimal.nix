@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    neofetch
-  ];
-
   programs.neovim = {
     enable = true;
     defaultEditor = true;
