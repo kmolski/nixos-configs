@@ -10,11 +10,10 @@
 
   networking.hostName = "cloudburst";
 
-  services.xserver = {
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
     enable = true;
-    xkb.layout = "pl";
-    displayManager.sddm.enable = true;
-    desktopManager.plasma5.enable = true;
+    wayland.enable = true;
   };
   services.printing.enable = true;
   services.pcscd.enable = true;
