@@ -47,9 +47,9 @@
 
   services.gpg-agent = {
     enable = true;
-    pinentryFlavor = "qt";
     enableSshSupport = true;
     sshKeys = [ "AE473752B03BB459" ];
+    pinentryPackage = pkgs.pinentry-qt;
   };
 
   nixpkgs.config.allowUnfree = true;
