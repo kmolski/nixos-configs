@@ -47,6 +47,7 @@
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
   };
+  services.resolved.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
