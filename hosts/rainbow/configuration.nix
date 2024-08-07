@@ -15,7 +15,10 @@
     address = "2a01:4f8:c012:9c99::1";
     prefixLength = 64;
   }];
-  networking.defaultGateway6 = "fe80::1";
+  networking.defaultGateway6 = {
+    address = "fe80::1";
+    interface = "enp1s0";
+  };
 
   boot.loader.systemd-boot.enable = true; # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
