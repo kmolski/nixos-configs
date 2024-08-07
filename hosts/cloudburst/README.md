@@ -45,3 +45,9 @@
     # zpool export -a
     # reboot
     ```
+
+4. Import GPG key for smart card
+
+    ```console
+    $ gpg --import /tmp/CB0204827B1F51FA-2024-04-07.asc
+    ```
