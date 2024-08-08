@@ -9,7 +9,10 @@
 
   networking.hostName = "rainbow";
 
-  services.fail2ban.enable = true;
+  services.fail2ban = {
+    enable = true;
+    bantime = "1d";
+  };
 
   networking.interfaces.enp1s0.ipv6.addresses = [{
     address = "2a01:4f8:c012:9c99::1";
