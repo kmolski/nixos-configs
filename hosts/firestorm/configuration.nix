@@ -37,7 +37,7 @@
     prefixLength = 24;
   }];
   networking.defaultGateway = "192.168.100.1";
-  networking.nameservers = [ "192.168.100.1" "1.1.1.1" ];
+  networking.nameservers = [ "192.168.100.1" ];
 
   boot.loader.grub.enable = false; # Use the extlinux boot loader.
   boot.loader.generic-extlinux-compatible.enable = true;
