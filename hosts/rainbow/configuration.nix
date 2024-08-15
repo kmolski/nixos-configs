@@ -6,12 +6,12 @@
       ./hardware-configuration.nix
       ../../modules/default.nix
       ../../modules/fail2ban.nix
-      ../../modules/letsencrypt-client.nix
+      ../../modules/letsencrypt.nix
     ];
 
   networking.hostName = "rainbow";
 
-  modules.letsencrypt-client.domain = "kmolski.xyz";
+  modules.letsencrypt.domain = "kmolski.xyz";
 
   age.secrets.letsencrypt-token.file = ../secrets/letsencrypt-token.age;
   age.secrets.letsencrypt-token.owner = config.security.acme.defaults.group;
