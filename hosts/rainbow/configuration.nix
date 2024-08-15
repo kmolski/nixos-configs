@@ -5,17 +5,13 @@
     [
       ./hardware-configuration.nix
       ../../modules/default.nix
+      ../../modules/fail2ban.nix
       ../../modules/letsencrypt-client.nix
     ];
 
   networking.hostName = "rainbow";
 
   modules.letsencrypt-client.domain = "kmolski.xyz";
-
-  services.fail2ban = {
-    enable = true;
-    bantime = "1d";
-  };
 
   age.secrets.letsencrypt-token.file = ../secrets/letsencrypt-token.age;
   age.secrets.letsencrypt-token.owner = config.security.acme.defaults.group;
