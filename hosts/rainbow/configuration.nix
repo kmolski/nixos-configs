@@ -7,11 +7,13 @@
       ../../modules/default.nix
       ../../modules/fail2ban.nix
       ../../modules/letsencrypt.nix
+      ../../modules/rabbitmq.nix
     ];
 
   networking.hostName = "rainbow";
 
   modules.letsencrypt.domain = "kmolski.xyz";
+  modules.rabbitmq.tlsDomain = "kmolski.xyz";
 
   age.secrets.letsencrypt-token.file = ../secrets/letsencrypt-token.age;
   age.secrets.letsencrypt-token.owner = config.security.acme.defaults.group;
