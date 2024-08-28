@@ -44,6 +44,24 @@
       fsType = "vfat";
     };
 
+  fileSystems."/bucket" =
+    {
+      device = "bucket";
+      fsType = "zfs";
+    };
+
+  fileSystems."/bucket/Video" =
+    {
+      device = "bucket/Video";
+      fsType = "zfs";
+    };
+
+  fileSystems."/bucket/VMs" =
+    {
+      device = "bucket/VMs";
+      fsType = "zfs";
+    };
+
   swapDevices =
     [{ device = "/dev/disk/by-uuid/17454b81-9104-455f-870e-62a288692e9b"; }];
 
