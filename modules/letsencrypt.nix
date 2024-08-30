@@ -17,6 +17,9 @@ in {
     };
 
     users.groups.tls-service.members = [ ];
+
+    age.secrets.letsencrypt-token.file = ../hosts/secrets/letsencrypt-token.age;
+    age.secrets.letsencrypt-token.owner = config.security.acme.defaults.group;
   };
 
   options.modules.letsencrypt = {
