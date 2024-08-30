@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let cfg = config.modules.wg-server;
+let cfg = config.modules.wireguard;
 in {
   config = {
     networking.wg-quick.interfaces.wg0 = {
@@ -21,9 +21,11 @@ in {
     };
 
     networking.firewall.allowedUDPPorts = [ cfg.listenPort ];
+
+    age.secrets.wg-privatekey.file = ../hosts/secrets/wg-privatekey.age;
   };
 
-  options.modules.wg-server = {
+  options.modules.wireguard = {
     lanInterface = lib.mkOption {
       type = lib.types.str;
       example = "end0";
@@ -32,7 +34,7 @@ in {
       '';
     };
     listenPort = lib.mkOption {
-      type = lib.types.int;
+      type = lib.types.port;
       default = 51820;
       description = lib.mkDoc ''
         The port on which Wireguard will listen.

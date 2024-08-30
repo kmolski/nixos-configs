@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let cfg = config.modules.duckdns-update;
+let cfg = config.modules.duckdns;
 in {
   config = {
     systemd.services.duckdns-update = {
@@ -10,6 +10,7 @@ in {
       startAt = "*:0/5";
 
       path = [ pkgs.curl ];
+      stopIfChanged = false;
       serviceConfig = {
         Type = "simple";
         User = "duckdns";
@@ -31,9 +32,12 @@ in {
       group = "duckdns";
     };
     users.groups.duckdns = { };
+
+    age.secrets.duckdns-token.file = ../hosts/secrets/duckdns-token.age;
+    age.secrets.duckdns-token.owner = "duckdns";
   };
 
-  options.modules.duckdns-update = {
+  options.modules.duckdns = {
     domain = lib.mkOption {
       type = lib.types.str;
       example = "subdomain";

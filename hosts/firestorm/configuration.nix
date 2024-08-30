@@ -7,14 +7,14 @@
       ../../modules/default.nix
       ../../modules/avahi-daemon.nix
       ../../modules/cups-server.nix
-      ../../modules/duckdns-update.nix
-      ../../modules/wg-server.nix
+      ../../modules/duckdns.nix
+      ../../modules/wireguard.nix
     ];
 
   networking.hostName = "firestorm";
 
-  modules.duckdns-update.domain = "kmolski";
-  modules.wg-server.lanInterface = "end0";
+  modules.duckdns.domain = "kmolski";
+  modules.wireguard.lanInterface = "end0";
 
   services.postgresql.enable = true;
   services.miniflux = {
@@ -25,10 +25,6 @@
       LISTEN_ADDR = "0.0.0.0:8080";
     };
   };
-
-  age.secrets.duckdns-token.file = ../secrets/duckdns-token.age;
-  age.secrets.duckdns-token.owner = "duckdns";
-  age.secrets.wg-privatekey.file = ../secrets/wg-privatekey.age;
 
   networking.firewall.allowedTCPPorts = [ 8080 ];
 
