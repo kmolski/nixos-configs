@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ../../modules/default.nix
       ../../modules/fail2ban.nix
+      ../../modules/kubernetes.nix
       ../../modules/letsencrypt.nix
       ../../modules/rabbitmq.nix
     ];

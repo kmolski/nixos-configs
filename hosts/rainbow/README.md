@@ -21,3 +21,9 @@
     # umount -Rl /mnt
     # reboot
     ```
+
+4. Import kubeconfig for user
+
+    ```console
+    $ sudo install -Dm 0600 --owner kmolski /etc/rancher/k3s/k3s.yaml ~/.kube/config
+    ```
