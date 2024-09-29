@@ -9,7 +9,8 @@
     firefox
 
     # Productivity
-    jetbrains.idea-ultimate
+    jetbrains.idea-community
+    jetbrains.rust-rover
     libreoffice
     virt-manager
 
