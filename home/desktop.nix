@@ -16,12 +16,16 @@
 
     # Multimedia
     obs-studio
-    spotify
     vlc
 
     # Fonts
     iosevka
   ];
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   programs.gpg = {
     enable = true;
@@ -39,11 +43,6 @@
       personal-compress-preferences = [ "ZLIB" "BZIP2" "ZIP" "Uncompressed" ];
       default-preference-list = [ "SHA512" "SHA384" "SHA256" "AES256" "AES192" "AES" "ZLIB" "BZIP2" "ZIP" "Uncompressed" ];
     };
-  };
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
   };
 
   services.gpg-agent = {

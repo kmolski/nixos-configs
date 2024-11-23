@@ -9,4 +9,5 @@
       addresses = true;
     };
   };
+  networking.enableIPv6 = false;
 }

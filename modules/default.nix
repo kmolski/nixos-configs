@@ -20,14 +20,12 @@
     curl
     fzf
     git
-    gnupg
     htop
     jq
     lsof
     neovim
     python3
     ripgrep
-    rlwrap
     rsync
     tmux
     wget
