@@ -26,6 +26,7 @@
   };
 
   boot.loader.systemd-boot.enable = true; # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.configurationLimit = 2;
   boot.loader.efi.canTouchEfiVariables = true;
 
   services.fstrim.enable = true;
