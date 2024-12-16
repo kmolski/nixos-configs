@@ -18,9 +18,6 @@
   services.printing.enable = true;
   services.pcscd.enable = true;
 
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
   boot.loader.systemd-boot.enable = true; # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "elevator=none" ];
