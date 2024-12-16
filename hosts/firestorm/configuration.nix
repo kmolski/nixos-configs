@@ -16,7 +16,10 @@
   modules.duckdns.domain = "kmolski";
   modules.wireguard.lanInterface = "end0";
 
-  services.postgresql.enable = true;
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_17;
+  };
   services.miniflux = {
     enable = true;
     adminCredentialsFile = "/dev/null";
