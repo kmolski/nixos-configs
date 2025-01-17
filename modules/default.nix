@@ -47,5 +47,14 @@
   };
   services.resolved.enable = true;
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+  nix.optimise = {
+    automatic = true;
+    dates = [ "weekly" ];
+  };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
