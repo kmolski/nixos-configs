@@ -13,7 +13,7 @@
     userName = "kmolski";
     userEmail = "krzysztof.molski29@gmail.com";
     signing.key = "8C998FCD276F4328";
-    ignores = [ ".direnv" ".envrc" ];
+    ignores = [ ".direnv" ".envrc" ".idea" ];
   };
 
   programs.htop = {
