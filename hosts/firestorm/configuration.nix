@@ -16,10 +16,6 @@
   modules.duckdns.domain = "kmolski";
   modules.wireguard.lanInterface = "end0";
 
-  services.postgresql = {
-    enable = true;
-    package = pkgs.postgresql_17;
-  };
   services.miniflux = {
     enable = true;
     adminCredentialsFile = "/dev/null";
@@ -28,6 +24,11 @@
       LISTEN_ADDR = "0.0.0.0:8080";
     };
   };
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_17;
+  };
+  services.postgresqlBackup.enable = true;
 
   networking.firewall.allowedTCPPorts = [ 8080 ];
 
