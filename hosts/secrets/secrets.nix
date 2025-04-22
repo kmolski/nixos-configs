@@ -5,6 +5,7 @@ let
 in
 {
   "backup-cloudburst-key.age".publicKeys = cloudburst;
+  "backup-cloudburst-pass.age".publicKeys = cloudburst;
 
   "duckdns-token.age".publicKeys = firestorm;
   "wg-privatekey.age".publicKeys = firestorm;
