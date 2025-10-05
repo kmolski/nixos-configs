@@ -49,7 +49,7 @@
     enable = true;
     enableSshSupport = true;
     sshKeys = [ "AE473752B03BB459" ];
-    pinentryPackage = pkgs.pinentry-qt;
+    pinentry.package = pkgs.pinentry-qt;
   };
 
   nixpkgs.config.allowUnfree = true;
