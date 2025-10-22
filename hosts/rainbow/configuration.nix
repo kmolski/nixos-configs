@@ -8,13 +8,11 @@
       ../../modules/fail2ban.nix
       ../../modules/kubernetes.nix
       ../../modules/letsencrypt.nix
-      ../../modules/rabbitmq.nix
     ];
 
   networking.hostName = "rainbow";
 
   modules.letsencrypt.domain = "kmolski.xyz";
-  modules.rabbitmq.tlsDomain = "kmolski.xyz";
 
   networking.interfaces.enp1s0.ipv6.addresses = [{
     address = "2a01:4f8:c012:9c99::1";
