@@ -12,6 +12,16 @@ in {
         dnsPropagationCheck = true;
         extraDomainNames = [ "*.${cfg.domain}" ];
         credentialFiles = { "CF_DNS_API_TOKEN_FILE" = "${config.age.secrets.letsencrypt-token.path}"; };
+        postRun =
+          if config.services.k3s.enable then ''
+            k3s kubectl create secret tls default-ingress-cert \
+              --namespace=kube-system \
+              --key=./key.pem \
+              --cert=./cert.pem \
+              --save-config \
+              --dry-run=client \
+              -o yaml | k3s kubectl apply -f -
+          '' else "";
         group = "tls-service";
       };
     };
