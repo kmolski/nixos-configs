@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ../../modules/default.nix
       ../../modules/avahi-daemon.nix
+      ../../modules/podman.nix
     ];
 
   networking.hostName = "cloudburst";
