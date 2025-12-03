@@ -20,7 +20,7 @@
     enable = true;
     adminCredentialsFile = "/dev/null";
     config = {
-      CREATE_ADMIN = pkgs.lib.mkForce "";
+      CREATE_ADMIN = false;
       LISTEN_ADDR = "0.0.0.0:8080";
     };
   };
