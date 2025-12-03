@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ kubectl ];
+  environment.systemPackages = with pkgs; [ k3s kubectl ];
 
   services.k3s = {
     enable = true;
