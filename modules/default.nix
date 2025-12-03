@@ -35,7 +35,7 @@
     shell = pkgs.fish;
     isNormalUser = true;
     initialPassword = "";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "podman" "wheel" ];
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJKawLwB4U6wWG4vWFGoWZmVmy3sgV9JVbq4AWp0YpE7 kmolski@cloudburst" ];
   };
 

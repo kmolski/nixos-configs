@@ -6,5 +6,6 @@
   virtualisation = {
     containers.enable = true;
     podman.enable = true;
+    podman.dockerSocket.enable = true;
   };
 }
