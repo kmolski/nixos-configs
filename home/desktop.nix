@@ -4,9 +4,10 @@
   imports = [ ./minimal.nix ];
 
   home.packages = with pkgs; [
-    # Web browsers
+    # Internet
     chromium
     firefox
+    signal-desktop
 
     # Productivity
     jetbrains.idea-community
@@ -22,9 +23,24 @@
     iosevka
   ];
 
-  programs.direnv = {
+  programs.zed-editor = {
     enable = true;
-    nix-direnv.enable = true;
+    userSettings = {
+      vim_mode = true;
+      relative_line_numbers = true;
+      remove_trailing_whitespace_on_save = true;
+      buffer_font_family = "Iosevka";
+      buffer_font_size = 16;
+      ui_font_family = ".SystemUIFont";
+      ui_font_weight = 400;
+      ui_font_size = 16;
+      theme = {
+        mode = "system";
+        light = "Gruvbox Light";
+        dark = "Gruvbox Dark";
+      };
+      telemetry.metrics = false;
+    };
   };
 
   programs.gpg = {
@@ -50,6 +66,11 @@
     enableSshSupport = true;
     sshKeys = [ "AE473752B03BB459" ];
     pinentry.package = pkgs.pinentry-qt;
+  };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;

@@ -3,10 +3,10 @@
 {
   programs.git = {
     enable = true;
-    userName = "kmolski";
-    userEmail = "krzysztof.molski29@gmail.com";
+    ignores = [ ".direnv" ".envrc" ".idea" ".zed" ];
+    settings.user.email = "krzysztof.molski29@gmail.com";
+    settings.user.name = "kmolski";
     signing.key = "8C998FCD276F4328";
-    ignores = [ ".direnv" ".envrc" ".idea" ];
   };
 
   programs.fish.enable = true;
