@@ -1,13 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
-
-  programs.fish.enable = true;
-
   programs.git = {
     enable = true;
     userName = "kmolski";
@@ -16,38 +9,8 @@
     ignores = [ ".direnv" ".envrc" ".idea" ];
   };
 
-  programs.htop = {
-    enable = true;
-    settings = {
-      fields = with config.lib.htop.fields; [
-        PID
-        USER
-        PRIORITY
-        NICE
-        PERCENT_CPU
-        PERCENT_MEM
-        TIME
-        NLWP
-        M_SIZE
-        M_RESIDENT
-        STATE
-        COMM
-      ];
-      sort_key = config.lib.htop.fields.PERCENT_MEM;
-      hide_userland_threads = true;
-      detailed_cpu_time = true;
-    } // (with config.lib.htop; leftMeters [
-      (bar "LeftCPUs")
-      (bar "Memory")
-      (bar "Swap")
-      (text "ZFSARC")
-    ]) // (with config.lib.htop; rightMeters [
-      (bar "RightCPUs")
-      (text "Tasks")
-      (text "LoadAverage")
-      (text "Uptime")
-    ]);
-  };
+  programs.fish.enable = true;
+  programs.skim.enable = true;
 
   programs.home-manager.enable = true;
 

@@ -18,17 +18,12 @@
   programs.fish.enable = true;
   environment.systemPackages = with pkgs; [
     curl
-    fzf
     git
-    htop
-    jq
-    lsof
-    neovim
+    jaq
+    nodePackages.nodejs
+    procfd
     python3
     ripgrep
-    rsync
-    tmux
-    wget
   ];
 
   users.users.kmolski = {
